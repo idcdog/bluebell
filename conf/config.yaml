@@ -1,0 +1,36 @@
+name: "bluebell"
+# debug、test、release
+mode: "test"
+version: "v2"
+port: 8080
+start_time: "2023-01-01"
+machine_id: 1
+# 默认分页信息
+page: 1
+size: 10
+max_page_size: 100
+auth:
+  # 单位小时
+  jwt_expire: 8760
+log:
+  level: "debug"
+  filename: "run.log"
+  max_size: 200
+  max_age: 30
+  max_backups: 7
+  compress: "false"
+mysql:
+  host: "127.0.0.1"
+  port: 3306
+  user: "root"
+  password: "rootpass"
+  dbname: "bluebell"
+  max_conns: 20
+  max_idle_conns: 10
+redis:
+  host: "127.0.0.1"
+  port: 6379
+  password: "rootpass"
+  db: 0
+  pool_size: 100
+
