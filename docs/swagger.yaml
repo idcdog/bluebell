@@ -1,0 +1,141 @@
+basePath: /api/v1
+definitions:
+  controller._ResponseCommunityDetail:
+    properties:
+      code:
+        allOf:
+        - $ref: '#/definitions/controller.ResCode'
+        description: 业务响应状态码
+      data:
+        description: 数据
+        items:
+          $ref: '#/definitions/models.CommunityDetail'
+        type: array
+      message:
+        description: 提示信息
+        type: string
+    type: object
+  controller._ResponseCommunitys:
+    properties:
+      code:
+        allOf:
+        - $ref: '#/definitions/controller.ResCode'
+        description: 业务响应状态码
+      data:
+        description: 数据
+        items:
+          $ref: '#/definitions/models.Community'
+        type: array
+      message:
+        description: 提示信息
+        type: string
+    type: object
+  controller.ResCode:
+    enum:
+    - 1001
+    - 1002
+    - 1003
+    - 1004
+    - 1005
+    - 1006
+    - 1007
+    - 1008
+    - 1009
+    - 1010
+    type: integer
+    x-enum-varnames:
+    - CodeSuccess
+    - CodeInvalidParam
+    - CodeUserExist
+    - CodeUserNotExist
+    - CodeInvalidPassword
+    - CodeServerBusy
+    - CodeInvalidToken
+    - CodeNeedLogin
+    - CodeInvalidID
+    - CodeVoteRepeated
+  models.Community:
+    properties:
+      id:
+        type: integer
+      name:
+        type: string
+    type: object
+  models.CommunityDetail:
+    properties:
+      createTime:
+        type: string
+      id:
+        type: integer
+      introduction:
+        type: string
+      name:
+        type: string
+    type: object
+externalDocs:
+  description: OpenAPI
+  url: https://swagger.io/resources/open-api/
+host: localhost:8080
+info:
+  contact:
+    email: support@swagger.io
+    name: API Support
+    url: http://www.swagger.io/support
+  description: gin框架学习教程专用的demo项目
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  termsOfService: http://swagger.io/terms/
+  title: bluebell gin框架demo项目
+  version: "1.0"
+paths:
+  /community:
+    get:
+      consumes:
+      - application/json
+      description: 可按照社区按时间或者分数排序查询帖子列表接口
+      parameters:
+      - description: Bearer 用户令牌
+        in: header
+        name: Authorization
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/controller._ResponseCommunitys'
+      security:
+      - ApiKeyAuth: []
+      summary: 查询社区列表
+      tags:
+      - 社区相关接口
+  /community/{id}:
+    get:
+      consumes:
+      - application/json
+      description: 可按照社区按时间或者分数排序查询帖子列表接口
+      parameters:
+      - description: Bearer 用户令牌
+        in: header
+        name: Authorization
+        type: string
+      - description: 社区id
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/controller._ResponseCommunityDetail'
+      security:
+      - ApiKeyAuth: []
+      summary: 查询社区列表
+      tags:
+      - 社区相关接口
+swagger: "2.0"

@@ -19,6 +19,23 @@ import (
 	"go.uber.org/zap"
 )
 
+// @title bluebell gin框架demo项目
+// @version 1.0
+// @description gin框架学习教程专用的demo项目
+// @termsOfService  http://swagger.io/terms/
+
+// @contact.name   API Support
+// @contact.url    http://www.swagger.io/support
+// @contact.email  support@swagger.io
+
+// @license.name  Apache 2.0
+// @license.url   http://www.apache.org/licenses/LICENSE-2.0.html
+
+// @host localhost:8080
+// @BasePath /api/v1
+
+// @externalDocs.description  OpenAPI
+// @externalDocs.url          https://swagger.io/resources/open-api/
 func main() {
 	// 1. 加载配置
 	if err := settings.Init(); err != nil {
