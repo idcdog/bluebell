@@ -1,6 +1,6 @@
 name: "bluebell"
 # debug、test、release
-mode: "test"
+mode: "debug"
 version: "v2"
 port: 8080
 start_time: "2023-01-01"
